@@ -23,7 +23,7 @@
   estimate the Battlefield 6 hipfire target from its sensitivity formula.
 
   Close the game before writing: it overwrites the save on exit. Every write
-  makes a Configuration.sav.bak backup first.
+  first makes a timestamped Configuration.sav.<yyyyMMdd-HHmmss>.bak backup.
 #>
 param(
     [Parameter(Mandatory)][ValidateSet('get', 'set', 'match')][string]$Command,
@@ -58,10 +58,11 @@ function Get-FloatOffset([byte[]]$b) {
 
 function Write-Sens([byte[]]$b, [int]$off, [double]$v) {
     $old = [System.BitConverter]::ToSingle($b, $off)
-    Copy-Item $SavePath "$SavePath.bak" -Force
+    $backup = "$SavePath.$(Get-Date -Format 'yyyyMMdd-HHmmss').bak"
+    Copy-Item $SavePath $backup -Force
     [Array]::Copy([System.BitConverter]::GetBytes([single]$v), 0, $b, $off, 4)
     [System.IO.File]::WriteAllBytes($SavePath, $b)
-    "CameraSensibility: $old -> $v  (backup: $SavePath.bak)"
+    "CameraSensibility: $old -> $v  (backup: $backup)"
 }
 
 $bytes = [System.IO.File]::ReadAllBytes($SavePath)

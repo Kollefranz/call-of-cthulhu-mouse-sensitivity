@@ -39,8 +39,9 @@ and writes that float directly, and can tune it to match another game's **cm/360
 .\coc-sens.ps1 match -Bf6Cm360 27 -MeasuredCm 34.3
 ```
 
-Every write first makes a `Configuration.sav.bak` backup. **Close the game before
-writing** — it overwrites the save on exit and would clobber your change.
+Every write first makes a timestamped `Configuration.sav.<yyyyMMdd-HHmmss>.bak`
+backup. **Close the game before writing** — it overwrites the save on exit and would
+clobber your change.
 
 ## Matching to another game (e.g. Battlefield 6)
 
