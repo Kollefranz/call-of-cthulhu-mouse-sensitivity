@@ -1,7 +1,10 @@
-# coc-sens
+# Call of Cthulhu (2018) Mouse Sensitivity Tool
 
 A tiny PowerShell tool to **read, set, and sensitivity-match** the mouse sensitivity in
 **Call of Cthulhu (2018)** — the Cyanide/Focus Home game built on Unreal Engine 4.
+
+> Built with [Claude Code](https://claude.com/claude-code) (Anthropic) — the save-file
+> reverse-engineering, cm/360 matching math, and script were produced with AI assistance.
 
 ## Why this exists
 
